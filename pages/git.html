@@ -27,7 +27,8 @@
                 <li class="active"><a href="git.html">Git & GitHub</a></li>
                 <li><a href="lnx.html">Linux</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="hw/w510.html">ThinkPad W510</a></li>
                         <li><a href="hw/rpi.html">Raspberry Pi</a></li>
@@ -52,13 +53,39 @@
 </nav>
 
 <div class="container">
-    <h1>Tips & Tricks <small>to make a lazy one's life easier</small></h1>
+    <h1>Git & GitHub</h1>
+
     <p class="lead">
-        Intro Text
+        Knowledge related to git and GitHub.
     </p>
+    <hr>
+    <h2>Git Configuration</h2>
+
     <p>
-        Some Text
+        Config related stuff for git.
     </p>
+
+    <div class="panel">
+        <h3 class="panel-heading">User name & email</h3>
+
+        <div class="panel-body">
+            <p>
+                You can configure your name and email address using the following two commands:
+            </p>
+            <pre>$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com</pre>
+        </div>
+    </div>
+    <div class="panel">
+        <h3 class="panel-heading">Change default editor</h3>
+
+        <div class="panel-body">
+            <p>
+                You can change your preferred editor using the following command:
+            </p>
+            <pre>$ git config --global core.editor vi</pre>
+        </div>
+    </div>
 </div>
 
 <script src="../js/jquery.min.js"></script>

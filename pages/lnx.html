@@ -27,7 +27,8 @@
                 <li><a href="git.html">Git & GitHub</a></li>
                 <li class="active"><a href="lnx.html">Linux</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="hw/w510.html">ThinkPad W510</a></li>
                         <li><a href="hw/rpi.html">Raspberry Pi</a></li>
@@ -53,15 +54,18 @@
 
 <div class="container">
     <h1>Linux</h1>
+
     <p class="lead">
-        Linux is besides Mac OS my favorite operating system. Here I will Store all my config files and tweaks in a blog-like style.
+        Linux is besides Mac OS my favorite operating system. Here I will Store all my config files and tweaks in a
+        blog-like style.
     </p>
 
-        <div class="container">
-            <h2>.bashrc</h2>
-            <p>
-                Here's my bash configuration.
-            </p>
+    <div class="container">
+        <h2>.bashrc</h2>
+
+        <p>
+            Here's my bash configuration.
+        </p>
             <pre class="pre-scrollable">#  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
@@ -282,10 +286,89 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
     httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; </pre>
-        </div>
+    </div>
+    <hr>
+    <h2>.conkyrc</h2>
+
+    <p>
+        My super-cool config for conky!
+    </p>
+            <pre class="pre-scrollable">##############################################
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color 656667
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 12
+gap_y 56
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+S Y S T E M    I N F O
+${hr}
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+RAM:$alignr$mem/$memmax
+Swap usage:$alignr$swap/$swapmax
+Disk usage:$alignr${fs_used /}/${fs_size /}
+CPU usage:$alignr${cpu cpu0}%
+${cpugraph ffffff 8b4b0b}
+
+N E T W O R K
+${hr}
+Download:$alignr ${downspeed wlan0} kbyte/s
+${downspeedgraph wlan0 8b4b0b ffffff}
+Upload:$alignr ${upspeed wlan0} kbyte/s
+${upspeedgraph wlan0 8b4b0b ffffff
+</pre>
+
+    <hr>
+    <h2>first time setup script</h2>
+
+    <p>
+        Installs all the software I need in one comand.
+    </p>
+    <pre>sudo apt-get install vim-nox cmatrix bzip2 kernel-package libncurses-dev build-essential stress lm-sensors lynx git</pre>
 
 </div>
-
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
