@@ -135,16 +135,16 @@
         Additional (awesome) features like working brightness buttons will be enabled, if you put the following code into the <code>device</code> section of the xorg.conf
     </p>
     <pre>
-    # Disables Nvidia logo
-    Option         " NoLogo" "true"
-    # Fix Large fonts
-    Option         "DPI" "96 x 96"
-    # Power saving setting for Nvidia drivers
-    Option         "OnDemandVBlankInterrupts" "1"
-    # Enables overclocking gui
-    Option         "Coolbits" "1"
-    # Enables brightness control
-    Option "RegistryDwords" "EnableBrightnessControl=1"
+# Disables Nvidia logo
+Option         " NoLogo" "true"
+# Fix Large fonts
+Option         "DPI" "96 x 96"
+# Power saving setting for Nvidia drivers
+Option         "OnDemandVBlankInterrupts" "1"
+# Enables overclocking gui
+Option         "Coolbits" "1"
+# Enables brightness control
+Option "RegistryDwords" "EnableBrightnessControl=1"
     </pre>
     <hr>
     <h3>TrackPoint Scrolling</h3>
@@ -155,16 +155,16 @@
         Basically you just need to edit/create the file <code>/usr/share/X11/xorg.conf.d/20-thinkpad.conf</code> and paste the following content into it:
     </p>
     <pre>
-    Section "InputClass"
-	    Identifier	"Trackpoint Wheel Emulation"
-	    MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
-	    MatchDevicePath	"/dev/input/event*"
-	    Option		"EmulateWheel"		"true"
-	    Option		"EmulateWheelButton"	"2"
-	    Option		"Emulate3Buttons"	"false"
-	    Option		"XAxisMapping"		"6 7"
-	    Option		"YAxisMapping"		"4 5"
-    EndSection
+Section "InputClass"
+    Identifier	"Trackpoint Wheel Emulation"
+    MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
+    MatchDevicePath	"/dev/input/event*"
+    Option		"EmulateWheel"		"true"
+    Option		"EmulateWheelButton"	"2"
+    Option		"Emulate3Buttons"	"false"
+    Option		"XAxisMapping"		"6 7"
+    Option		"YAxisMapping"		"4 5"
+EndSection
     </pre>
     <p>
         This exact code worked well on my T60 and T61 too, but <b>if it doesn't work for you</b>, you need to execute the following command to get every possible <code>MatchProduct</code> String:

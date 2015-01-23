@@ -27,7 +27,8 @@
                 <li><a href="../git.html">Git & GitHub</a></li>
                 <li><a href="../lnx.html">Linux</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="w510.html">ThinkPad W510</a></li>
                         <li class="active"><a href="rpi.html">Raspberry Pi</a></li>
@@ -52,13 +53,118 @@
 </nav>
 
 <div class="container">
-    <h1>Tips & Tricks <small>to make a lazy one's life easier</small></h1>
+    <h1>RaspberryPi</h1>
+
     <p class="lead">
-        Intro Text
+        I use my RaspberryPi for two things: either as a media center or as some kind of server/playground.
     </p>
-    <p>
-        Some Text
-    </p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Media Center</h2>
+            <p>
+                When I use my Raspi as a media center, I recommend to use <a href="http://openelec.tv/component/content/article?id=1">OpenELEC</a> as OS. It's the most lightweight system for a pure media center, completely free (and open source) and the whole system is only 94 MB in size. Also, there's a very cool <a href="http://ls80.github.io/script.openelec.rpi.config/">plugin</a> for changing the config right from your sofa.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2>Server/Playground</h2>
+            <p>
+                I think, Raspian (the official Debian version for the Pi) contains a lto of unneccessary crap. That's why I use <a href="http://www.linuxsystems.it/raspbian-wheezy-armhf-raspberry-pi-minimal-image/">this</a> Debian System with Hard Float binaries (floating point operations are done in hardware instead of software emulation, that means higher performances).
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Configuration</h2>
+        <p>
+            The Raspberry Pi is configured using the file config.txt, which is in the root folder of the sdcard. I always overclock my system to the max. Here's my config:
+        </p>
+        <pre>
+################################################################################
+# Bootloader configuration - config.txt
+################################################################################
+
+################################################################################
+# Memory (System/GPU configuration )
+################################################################################
+
+# default GPU memory split (do not change if you do not know what you are doing)
+  gpu_mem=128
+
+################################################################################
+# Overclocking settings
+# WARNING: Do not change/enable if you do not know what you are doing!
+#          The System may become unstable or you can have data corruption or
+#          you can loose your warranty if you set wrong settings
+#
+# please read: http://elinux.org/RPi_config.txt#Overclocking_configuration
+################################################################################
+
+# Overclock mode settings.
+#
+# default recommended values are: arm_freq | core_freq | sdram_freq | over_voltage
+# no overclocking               :    700   |    250    |    400     |      0
+# mode 'Modest'                 :    800   |    300    |    400     |      0
+# mode 'Medium'                 :    900   |    333    |    450     |      2
+# mode 'High'                   :    950   |    450    |    450     |      6
+# mode 'Turbo'                  :   1000   |    500    |    500     |      6
+
+arm_freq=1000
+core_freq=500
+sdram_freq=500
+over_voltage=6
+
+# set to 'force_turbo=1' to disable dynamic overclocking (you can lose your warranty!)
+  force_turbo=0
+
+# If you have any data corruption using Turbo Mode and overclocking
+# try with this setting uncommented
+# If this still fails, try to use Medium mode without "over_voltage=2"
+# If it ultimately keeps failing, forget about this until it gets fixed
+# Use a more conservative mode that will works fine in any cases:
+# initial_turbo=30
+
+################################################################################
+# Overscan settings
+################################################################################
+
+# Make display smaller to stop text spilling off the screen
+# see also http://www.raspberrypi.org/phpBB3/viewtopic.php?f=67&t=15700
+# overscan_scale=1
+# disable_overscan=1
+
+# Adapt overscan values to your needs
+# overscan_left=57
+# overscan_right=59
+# overscan_top=20
+# overscan_bottom=20
+
+################################################################################
+# various settings see also: http://elinux.org/RPi_config.txt
+################################################################################
+
+# Force HDMI even if unplugged or powered off
+# hdmi_force_hotplug=1
+
+# Doesn't sent initial active source message.
+# Avoids bringing CEC (enabled TV) out of standby and channel switch when
+# rebooting.
+  hdmi_ignore_cec_init=1
+
+################################################################################
+# License keys to enable GPU hardware decoding for various codecs
+# to obtain keys visit the shop at http://www.raspberrypi.com
+################################################################################
+
+# decode_MPG2=0x00000000
+# decode_WVC1=0x00000000
+# decode_DTS=0x00000000
+# decode_DDP=0x00000000
+
+################################################################################
+# End of default configuration
+################################################################################
+        </pre>
+    </div>
 </div>
 
 <script src="../../js/jquery.min.js"></script>
