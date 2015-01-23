@@ -27,7 +27,8 @@
                 <li><a href="../git.html">Git & GitHub</a></li>
                 <li><a href="../lnx.html">Linux</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="active"><a href="w510.html">ThinkPad W510</a></li>
                         <li><a href="rpi.html">Raspberry Pi</a></li>
@@ -52,12 +53,127 @@
 </nav>
 
 <div class="container">
-    <h1>Tips & Tricks <small>to make a lazy one's life easier</small></h1>
+    <h1>ThinkPad W510</h1>
+
     <p class="lead">
-        Intro Text
+        Initial configuration needed on a <a href="http://debian.org">Debian GNU/Linux</a> based system like <a
+            href="http://crunchbang.org">CrunchBang</a>
+    </p>
+    <hr>
+    <h2>Introduction</h2>
+
+    <p>
+        The ThinkPad W510 is actually a great piece of hardware and ThinkPad laptops are known to are "linux-friendly".
+        But when you set up CrunchBang on a W510 and you finished the first-time setup, you'll sooner or later notice,
+        that some stuff just doesn't work right.
+    </p>
+
+    <p>
+        For me this stuff was:
+    </p>
+    <ul>
+        <li><b>volume buttons</b> didn't work</li>
+        <li><b>nouveau</b> was the video driver</li>
+        <li><b>brightness buttons</b> didn't work</li>
+        <li><b>trackpad scrolling</b> didn't work</li>
+    </ul>
+
+    <p>
+        So I invested a few hours into investigation (googling) and finally found a solution for every one of those
+        problems. I've also made a <a href="http://crunchbang.org/forums/viewtopic.php?id=31925">post about this</a> at
+        the CrunchBang forums in 2014.
+    </p>
+    <hr>
+    <h2>Solutions</h2>
+
+    <p class="lead">
+        Here are the solutions to all of the problems above.
+    </p>
+    <hr>
+    <h3>Volume Buttons</h3>
+
+    <p>
+        This is the solution, the forum user drlove601 <a
+            href="http://crunchbang.org/forums/viewtopic.php?id=28653">posted</a> on the CB forums. Basically,
+        PulseAudio is using the HDMI/DisplayPort as the primary output. To change this to the internal speakers and the
+        headphone jack, you'll need to install the following two packages:
+    </p>
+    <ul>
+        <li><b>xfce4-mixer</b> which is the frontend for mixer settings in Xfce</li>
+        <li><b>xfce4-settings</b> which is the Xfce settings manager frontend</li>
+    </ul>
+    <p>
+        You can update your sources and install those packages with the following command:
+    </p>
+    <pre>sudo apt-get update && sudo apt-get install xfce4-mixer xfce4-settings</pre>
+    <h4>How to switch the active sound card in crunchbang</h4>
+    <ol>
+        <li>run <code>xfce4-mixer</code> and select the sound card you want to use in the dropdown</li>
+        <li>run <code>xfce4-settings-editor</code></li>
+        <li>on the left hand side, select <code>xfce4-mixer</code></li>
+        <li>copy the content of <code>sound-card</code></li>
+        <li>paste it into <code>active-card</code></li>
+    </ol>
+    <p>
+        If it's not working right away, you need to do a reboot.
+    </p>
+    <hr>
+    <h3>Video Driver & Brightness Control</h3>
+    <p>
+        <a href="http://nouveau.freedesktop.org/wiki/">Nouveau</a>, the free video driver for nVidia's video cards may be okay, but in the case of the ThinkPad W510 I'm doing better (performance and temperature related) with the proprietary driver by nVidia.
+    </p>
+    <h4>Installing Packages</h4>
+    <p>
+        The following command will install the driver and the <a href="http://en.wikipedia.org/wiki/VDPAU">VDPAU</a> packages.
+    </p>
+    <pre>sudo apt-get install nvidia-kernel-dkms nvidia-glx nvidia-xconfig nvidia-settings nvidia-vdpau-driver vdpau-va-driver</pre>
+    <p>
+        Now you need to backup your existing <code>/etc/X11/xorg.conf</code>, if it's even existing and let the driver create a new one. The following command will do this for you. Your backed up <code>xorg.conf</code> will be in: <code>/etc/X11/xorg.conf.backup</code>
+    </p>
+    <pre>if [ -f /etc/X11/xorg.conf ];then sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.backup;fi && sudo nvidia-xconfig</pre>
+    <p>
+        Additional (awesome) features like working brightness buttons will be enabled, if you put the following code into the <code>device</code> section of the xorg.conf
+    </p>
+    <pre>
+    # Disables Nvidia logo
+    Option         " NoLogo" "true"
+    # Fix Large fonts
+    Option         "DPI" "96 x 96"
+    # Power saving setting for Nvidia drivers
+    Option         "OnDemandVBlankInterrupts" "1"
+    # Enables overclocking gui
+    Option         "Coolbits" "1"
+    # Enables brightness control
+    Option "RegistryDwords" "EnableBrightnessControl=1"
+    </pre>
+    <hr>
+    <h3>TrackPoint Scrolling</h3>
+    <p>
+        Last but not least there is the TrackPoint scrolling issue. I found the <a href="http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#xorg.conf.d">solution</a> to this problem at the ThinkWiki.
     </p>
     <p>
-        Some Text
+        Basically you just need to edit/create the file <code>/usr/share/X11/xorg.conf.d/20-thinkpad.conf</code> and paste the following content into it:
+    </p>
+    <pre>
+    Section "InputClass"
+	    Identifier	"Trackpoint Wheel Emulation"
+	    MatchProduct	"TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
+	    MatchDevicePath	"/dev/input/event*"
+	    Option		"EmulateWheel"		"true"
+	    Option		"EmulateWheelButton"	"2"
+	    Option		"Emulate3Buttons"	"false"
+	    Option		"XAxisMapping"		"6 7"
+	    Option		"YAxisMapping"		"4 5"
+    EndSection
+    </pre>
+    <p>
+        This exact code worked well on my T60 and T61 too, but <b>if it doesn't work for you</b>, you need to execute the following command to get every possible <code>MatchProduct</code> String:
+    </p>
+    <pre>sudo find /dev/input/event* -exec udevadm info --attribute-walk --name={} \; | grep -e product -e name | sort -u</pre>
+    <hr>
+    <h3>Additional Tweaks</h3>
+    <p class="lead">
+        You can find additional tweaks for the W510 on the <a href="../lnx.html">Linux Page</a>, because they are related to Linux systems in general instead of the ThinkPad.
     </p>
 </div>
 
