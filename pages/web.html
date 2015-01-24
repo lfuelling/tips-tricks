@@ -27,7 +27,8 @@
                 <li><a href="git.html">Git & GitHub</a></li>
                 <li><a href="lnx.html">Linux</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="hw/w510.html">ThinkPad W510</a></li>
                         <li><a href="hw/rpi.html">Raspberry Pi</a></li>
@@ -52,10 +53,31 @@
 </nav>
 
 <div class="container">
-    <div class="alert alert-info" role="alert">
-    <span class="glyphicon glyphicon-info-sign"></span>  To be <a href="https://github.com/lfuelling/tips-tricks" class="alert-link">filled</a>.
+    <h1>Web Projects
+        <small>also containing some Java because of Wicket & Stuff like that...</small>
+    </h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Easy configure inline JS variables with Wicket</h2>
+        </div>
+        <div class="panel-body">
+            <p>
+                There is probably a better way to do this, but I don't know how, so I made this little hack.
+            </p>
+
+            <p>
+                Create a <code>&lt;span style="display:none" wicket:id="valueToChange" id="val"&gt;&lt;/span&gt;</code>
+                and change the content dynamically in Wicket using:
+            </p>
+                <pre>add(new Label("valueToChange", getValue()));</pre>
+            <p>
+                Finally get the value into your JS code using <code>var value = $("#val").val;</code>.
+            </p>
+        </div>
+    </div>
+
 </div>
-</div>
+
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
