@@ -86,12 +86,12 @@
     <hr>
     <h2>Solutions</h2>
 
-    <p class="lead">
-        Here are the solutions to all of the problems above.
-    </p>
-    <hr>
-    <h3>Volume Buttons</h3>
+    <div class="panel panel-default">
 
+    <div class="panel-heading">
+    <h3 class="panel-title">Volume Buttons</h3>
+    </div>
+        <div class="panel-body">
     <p>
         This is the solution, the forum user drlove601 <a
             href="http://crunchbang.org/forums/viewtopic.php?id=28653">posted</a> on the CB forums. Basically,
@@ -117,8 +117,14 @@
     <p>
         If it's not working right away, you need to do a reboot.
     </p>
-    <hr>
-    <h3>Video Driver & Brightness Control</h3>
+        </div>
+    </div>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Video driver & brightness control</h3>
+        </div>
+        <div class="panel-body">
     <p>
         <a href="http://nouveau.freedesktop.org/wiki/">Nouveau</a>, the free video driver for nVidia's video cards may be okay, but in the case of the ThinkPad W510 I'm doing better (performance and temperature related) with the proprietary driver by nVidia.
     </p>
@@ -146,8 +152,13 @@ Option         "Coolbits" "1"
 # Enables brightness control
 Option "RegistryDwords" "EnableBrightnessControl=1"
     </pre>
-    <hr>
-    <h3>TrackPoint Scrolling</h3>
+    </div>
+        </div><div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">TrackPoint scrolling</h3>
+    </div>
+    <div class="panel-body">
     <p>
         Last but not least there is the TrackPoint scrolling issue. I found the <a href="http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint#xorg.conf.d">solution</a> to this problem at the ThinkWiki.
     </p>
@@ -170,7 +181,8 @@ EndSection
         This exact code worked well on my T60 and T61 too, but <b>if it doesn't work for you</b>, you need to execute the following command to get every possible <code>MatchProduct</code> String:
     </p>
     <pre>sudo find /dev/input/event* -exec udevadm info --attribute-walk --name={} \; | grep -e product -e name | sort -u</pre>
-    <hr>
+    </div>
+    </div>
     <h3>Additional Tweaks</h3>
     <p class="lead">
         You can find additional tweaks for the W510 on the <a href="../lnx.html">Linux Page</a>, because they are related to Linux systems in general instead of the ThinkPad.

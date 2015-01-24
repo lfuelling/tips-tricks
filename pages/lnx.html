@@ -60,12 +60,16 @@
         blog-like style.
     </p>
 
-    <div class="container">
-        <h2>.bashrc</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">.bashrc</h2>
+        </div>
+        <div class="panel-body">
 
-        <p>
-            Here's my bash configuration.
-        </p>
+
+            <p>
+                Here's my bash configuration.
+            </p>
             <pre class="pre-scrollable">#  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
@@ -286,13 +290,17 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
     httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; </pre>
+        </div>
     </div>
-    <hr>
-    <h2>.conkyrc</h2>
 
-    <p>
-        My super-cool config for conky!
-    </p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">.conkyrc</h2>
+        </div>
+        <div class="panel-body">
+            <p>
+                My super-cool config for conky!
+            </p>
             <pre class="pre-scrollable">##############################################
 # conky configuration
 #
@@ -359,18 +367,26 @@ ${downspeedgraph wlan0 8b4b0b ffffff}
 Upload:$alignr ${upspeed wlan0} kbyte/s
 ${upspeedgraph wlan0 8b4b0b ffffff
 </pre>
+        </div>
+    </div>
 
-    <hr>
-    <h2>first time setup script</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">first time setup script</h2>
+        </div>
+        <div class="panel-body">
+            <p>
+                Installs all the software I need in one comand.
+            </p>
+            <div class="alert alert-info" role="alert">
+                <strong><span class="glyphicon glyphicon-info-sign"></span></strong> This will be extended over the time.
+                </div>
+            <pre>sudo apt-get install vim-nox cmatrix bzip2 kernel-package libncurses-dev build-essential stress lm-sensors lynx git</pre>
 
-    <p>
-        Installs all the software I need in one comand.
-    </p>
-    <pre>sudo apt-get install vim-nox cmatrix bzip2 kernel-package libncurses-dev build-essential stress lm-sensors lynx git</pre>
-
-</div>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery-ui.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
