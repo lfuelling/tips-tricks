@@ -3,10 +3,10 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Tips & Tricks - Home</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link href="css/ripples.min.css" rel="stylesheet">
-    <link href="css/material-wfont.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/globals.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link href="../css/ripples.min.css" rel="stylesheet">
+    <link href="../css/material-wfont.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/globals.css"/>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -22,21 +22,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-bed"></span></a>
+            <a class="navbar-brand" href="../index.html"><span class="glyphicon glyphicon-bed"></span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">About</a></li>
-                <li><a href="pages/web.html">Web Projects</a></li>
-                <li><a href="pages/jqy.html">JQuery</a></li>
-                <li><a href="pages/git.html">Git & GitHub</a></li>
-                <li><a href="pages/lnx.html">Linux</a></li>
+                <li><a href="../index.html">About</a></li>
+                <li><a href="web.html">Web Projects</a></li>
+                <li class="active"><a href="jqy.html">JQuery</a></li>
+                <li><a href="git.html">Git & GitHub</a></li>
+                <li><a href="lnx.html">Linux</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hardware
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="pages/hw/w510.html">ThinkPad W510</a></li>
-                        <li><a href="pages/hw/rpi.html">Raspberry Pi</a></li>
+                        <li><a href="hw/w510.html">ThinkPad W510</a></li>
+                        <li><a href="hw/rpi.html">Raspberry Pi</a></li>
                     </ul>
                 </li>
             </ul>
@@ -58,44 +58,41 @@
 </nav>
 
 <div class="container">
-    <h1>Tips & Tricks
-        <small>to make a lazy one's life easier</small>
-    </h1>
-
-    <hr>
-
-    <p class="lead">
-        This website is my big reference for all kinds of config tweaks, tricks and software I use.
-    </p>
-
-    <div class="row">
-        <div class="col-md-7">
+    <h1>JQuery</h1>
+    <p class="lead">Here are some cool JQuery plugins and snippets.</p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Foggy</h2>
+        </div>
+        <div class="panel-body">
             <p>
-                Hi, my name is Lukas and I'm the author of this page. I created this, because I like to try a new OS
-                (mostly different Linux distros)
-                very often and with this website, the initial configuration of my system will probably be easier,
-                because I'll have all the information I need right on one page.
+                <a href="http://nbartlomiej.github.io/foggy/">Foggy</a> is a JQuery plugin for blurring page elements. Compared to <a href="http://blurjs.com/">blur.js</a> it's really easy to use and it can blur ANY element on your page dynamically. You decide what to blur and when. I use it a lot for making loading screens or login forms.
             </p>
-
+            <h3>Usage</h3>
             <p>
-                If you think, the information here is wrong/bad or if there are things you would like to see, please
-                create a new issue by clicking the Options Button (<span
-                    class="glyphicon glyphicon-option-vertical"></span>) and selecting "Suggest Changes".
+                The easiest way to use it is <code>$('#element').foggy();</code>. And you can disable it using <code>$('#element').foggy(false);</code>
             </p>
-
             <p>
-                The information on this page is Licensed under <a href="http://lfuelling.github.io/kossl">the <abbr
-                    title="The K40S Open Source Software License">KOSSL</abbr>.</a>
+                But that's not all. you also have some options:
+            </p>
+            <pre>$('#element').foggy({
+    blurRadius: 2,          // In pixels
+    opacity: 0.8,           // Falls back to a filter for IE (Who needs IE)
+    cssFilterSupport: true  // Use "-webkit-filter" where available
+}); </pre>
+            <p>
+                Foggy is on <a href="https://github.com/nbartlomiej/foggy">GitHub</a>.
             </p>
         </div>
     </div>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/ripples.min.js"></script>
-<script src="js/material.min.js"></script>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/ripples.min.js"></script>
+<script src="../js/material.min.js"></script>
 <script>
     $(document).ready(function() {
         $.material.init();
