@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Tips & Tricks - Home</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+    <link href="../css/ripples.min.css" rel="stylesheet">
+    <link href="../css/material-wfont.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/globals.css"/>
 </head>
 <body>
@@ -75,6 +76,11 @@
             </p>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+        </div>
+    </div>
 
 </div>
 
@@ -82,5 +88,12 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="js/ripples.min.js"></script>
+<script src="js/material.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
 </body>
 </html>
